@@ -1,0 +1,143 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: url('foto/fonnn.jpg') no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+#top-bar {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  background: linear-gradient(90deg, #1a3b5c, #3f505f);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+#game-title {
+  font-size: 25px; /* Размер шрифта */
+  font-weight: bold; /* Жирное начертание */
+  color: #ffffff; /* Белый цвет */
+  text-shadow: 2px 2px 5px rgb(0, 0, 0, 0.5); /* Тень для выделения */
+  letter-spacing: 3px; /* Расстояние между буквами */
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1a1a1a;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.tab {
+  padding: 15px;
+  cursor: pointer;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  flex: 1;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+.tab:hover {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  transform: scale(1.05);
+}
+
+.tab-content {
+  display: none;
+  padding: 30px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+h1#score {
+  color: #ffffff;
+  font-size: 1.5em;
+  margin-top: 20px;
+  padding: 15px;
+  background: linear-gradient(90deg, #212d31, #0072ff);
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#coin-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+#score-value {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+#battle-area {
+  margin: 30px auto;
+  position: relative;
+}
+
+.coin {
+  width: 220px;
+  height: 220px;
+  background-image: url('foto/mon.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  border-radius: 50%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.animate-coin {
+  transform: scale(0.9);
+}
+
+.plus-one {
+  position: absolute;
+  font-size: 32px; /* Увеличен размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none; /* Чтобы элемент не перекрывал клики */
+}
+
+#tap-health {
+  color: white;
+  background-color: rgb(59, 77, 84, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 160px;
+  font-size: 18px;
+  box-shadow: 0px 14px 10px rgba(0, 0, 0, 0.4);
+}
+
+.content-box {
+  background-color: rgba(20, 20, 20, 0.8);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgb(0, 0, 0, 0.4);
+}
+
+.content-box p {
+  margin: 15px 0;
+  font-size: 1.4em;
+}
+
+
+
