@@ -7,74 +7,51 @@ body {
   margin: 0;
   padding: 0;
 }
-
 #top-bar {
   display: flex;
   justify-content: center;
-  padding: 20px 15px;
-  background: linear-gradient(145deg, #00c6ff, #0072ff); /* Градиент с переходом */
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3), inset 0px 2px 5px rgba(255, 255, 255, 0.2); /* Тень и блеск */
-  border-radius: 0 0 50px 50px; /* Скругление нижних углов */
-  position: relative;
-  overflow: hidden;
-}
-
-#top-bar::before {
-  content: "";
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  width: 200%;
-  height: 100px;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(-50%);
-  border-radius: 50%;
-  filter: blur(30px);
+  padding: 15px;
+  background: linear-gradient(90deg, #1a3b5c, #3f505f);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 #game-title {
-  font-size: 28px; /* Увеличен размер шрифта */
+  font-size: 25px; /* Размер шрифта */
   font-weight: bold; /* Жирное начертание */
   color: #ffffff; /* Белый цвет */
-  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6); /* Улучшенная тень */
+  text-shadow: 2px 2px 5px rgb(0, 0, 0, 0.5); /* Тень для выделения */
   letter-spacing: 3px; /* Расстояние между буквами */
-  text-transform: uppercase; /* Все буквы заглавные */
-  z-index: 1; /* Чтобы текст был поверх */
-  position: relative;
 }
 
 .menu {
   display: flex;
   justify-content: space-around;
   background-color: #1a1a1a;
-  padding: 10px;
-  border-radius: 50px; /* Полностью закругленные кнопки */
+  padding: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-  margin: 20px 20px 0 20px; /* Отступы от краев */
 }
 
-.menu button {
+.tab {
+  padding: 15px;
+  cursor: pointer;
+  color: white;
+  background-color: #333;
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   flex: 1;
   margin: 0 10px;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 30px; /* Закругленные кнопки */
-  background-color: #333;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
 }
 
-.menu button:hover {
+.tab:hover {
   background: linear-gradient(90deg, #0072ff, #00c6ff);
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .tab-content {
   display: none;
-  padding: 20px;
+  padding: 30px;
 }
 
 .tab-content.active {
@@ -84,8 +61,8 @@ body {
 h1#score {
   color: #ffffff;
   font-size: 1.5em;
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 20px;
+  padding: 15px;
   background: linear-gradient(90deg, #212d31, #0072ff);
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
@@ -94,14 +71,25 @@ h1#score {
   justify-content: center;
 }
 
+#coin-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+#score-value {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
 #battle-area {
-  margin: 50px auto;
+  margin: 30px auto;
   position: relative;
 }
 
 .coin {
-  width: 150px;
-  height: 150px;
+  width: 220px;
+  height: 220px;
   background-image: url('foto/mon.jpg');
   background-size: cover;
   background-position: center;
@@ -118,15 +106,15 @@ h1#score {
 
 .plus-one {
   position: absolute;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 32px; /* Увеличен размер шрифта */
+  font-weight: bold; /* Жирный шрифт */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #ffffff;
+color: #ffffff;
   opacity: 0;
   transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
+  pointer-events: none; /* Чтобы элемент не перекрывал клики */
 }
 
 #tap-health {
@@ -134,7 +122,7 @@ h1#score {
   background-color: rgb(59, 77, 84, 0.7);
   padding: 10px;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 160px;
   font-size: 18px;
   box-shadow: 0px 14px 10px rgba(0, 0, 0, 0.4);
 }
