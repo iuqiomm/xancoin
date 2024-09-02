@@ -34,9 +34,9 @@
     <div id="friends" class="tab-content">
         <div class="content-box">
             <p>Пригласите друга и получите 5000 монет!</p>
-            <button class="tab" onclick="inviteFriend()">Пригласить друга</button>
+            <button class="invite-button" onclick="inviteFriend()">Пригласить друга</button>
             <input type="text" id="invite-link" value="https://example.com/invite" style="display: none;">
-            <button id="copy-button" class="tab" style="display: none;" onclick="copyLink()">Скопировать ссылку</button>
+            <button id="copy-button" class="invite-button" style="display: none;" onclick="copyLink()">Скопировать ссылку</button>
             <p id="reward-status"></p>
         </div>
     </div>
@@ -44,7 +44,7 @@
     <div id="missions" class="tab-content">
         <div class="content-box">
             <p>Задание: Подпишитесь на наш канал в Telegram! Награда 5000</p>
-            <button class="tab" onclick="completeMission(); window.open('https://t.me/xancoinapp', '_blank');">Перейти к каналу</button>
+            <button class="channel-button" onclick="completeMission(); window.open('https://t.me/xancoinapp', '_blank');">Перейти к каналу</button>
             <p id="mission-status"></p>
         </div>
     </div>
