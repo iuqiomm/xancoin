@@ -11,9 +11,11 @@ function restoreHealth() {
     const timeDiff = Math.floor((currentTime - lastTapTime) / 1000);
 
     if (timeDiff > 0) {
-        const healthToRestore = Math.floor(timeDiff / 3600);
+        // Восстанавливаем 1 hp каждую секунду
+        const healthToRestore = timeDiff;
         tapHealth = Math.min(tapHealth + healthToRestore, 5000);
         localStorage.setItem('tapHealth', tapHealth);
+        document.getElementById("tap-health").innerText = "hp: " + tapHealth;
     }
 }
 
@@ -82,7 +84,7 @@ function inviteFriend() {
 function completeMission() {
     if (!missionCompleted) {
         addPoints(5000); // Добавляем 5000 монет
-        
+
         localStorage.setItem('missionCompleted', true); // Сохраняем выполнение задания
         missionCompleted = true;
     } else {
@@ -98,4 +100,9 @@ function subscribeToChannel() {
 window.onload = function() {
     restoreHealth(); // Восстанавливаем здоровье при загрузке
     console.log("Игра загружена успешно");
+
+    // Устанавливаем интервал для периодического восстановления здоровья каждую секунду
+    setInterval(() => {
+        restoreHealth();
+    }, 1000); // 1000 мс = 1 секунда
 }
