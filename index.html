@@ -31,22 +31,12 @@
         <div id="tap-health">hp: 5000</div>
     </div>
 
-            <div id="friends" class="tab-content">
-                <div class="content-box">
-                    <p>Пригласите друга и получите 5000 монет!</p>
-                    <button class="tab invite-button" onclick="inviteFriend()">Пригласить друга</button>
-                    <input type="text" id="invite-link" value="https://example.com/invite" style="display: none;">
-                    <button id="copy-button" class="tab" style="display: none;" onclick="copyLink()">Скопировать ссылку</button>
-                    <p id="reward-status"></p>
-
-                    <!-- Новый блок для отображения прогресса приглашений -->
-                    <p id="invite-progress">Приглашено друзей: 0/25</p>
-                    <p id="invite-reward-status"></p>
-                </div>
-            </div>
-
-            <!-- Отображение количества приглашённых друзей и прогресса к бонусу -->
-            <p id="friends-count">Приглашено друзей: 0 / 25</p>
+    <div id="friends" class="tab-content">
+        <div class="content-box">
+            <p>Пригласите друга и получите 5000 монет!</p>
+            <button class="tab" onclick="inviteFriend()">Пригласить друга</button>
+            <input type="text" id="invite-link" value="https://example.com/invite" style="display: none;">
+            <button id="copy-button" class="tab" style="display: none;" onclick="copyLink()">Скопировать ссылку</button>
             <p id="reward-status"></p>
         </div>
     </div>
