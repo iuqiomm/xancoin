@@ -1,60 +1,60 @@
-                <!DOCTYPE html>
-                <html lang="ru">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Tap Game</title>
-                    <link rel="stylesheet" href="style.css">
-                    <script src="script.js" defer></script>
-                </head>
-                <body>
-                    <div id="top-bar">
-                        <div id="game-title">Xancoin</div>
-                    </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tap Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="top-bar">
+        <div id="game-title">Xancoin</div>
+    </div>
 
-                    <div class="menu">
-                        <button class="tab" onclick="openTab('game')">Game</button>
-                        <button class="tab" onclick="openTab('friends')">Friends</button>
-                        <button class="tab" onclick="openTab('missions')">Mission</button>
-                        <button class="tab" onclick="openTab('airdrop')">Airdrop</button>
-                    </div>
+    <div class="menu">
+        <button class="tab" onclick="openTab('game')">Game</button>
+        <button class="tab" onclick="openTab('friends')">Friends</button>
+        <button class="tab" onclick="openTab('missions')">Mission</button>
+        <button class="tab" onclick="openTab('airdrop')">Airdrop</button>
+    </div>
 
-                    <div id="game" class="tab-content active">
-                        <h1 id="score">
-                            <img id="coin-icon" src="foto/sticker.jpg" alt="Xancoin" class="coin-icon">
-                            <span id="score-value">0</span>
-                        </h1>
-                        <div id="battle-area">
-                            <div id="coin" class="coin" onclick="tapCoin()"></div>
-                            <div id="plus-one" class="plus-one">+1</div>
-                        </div>
-                        <div id="tap-health">
-                            hp: 5000
-                        </div>
-                    </div>
+    <div id="game" class="tab-content active">
+        <h1 id="score">
+            <img id="coin-icon" src="foto/sticker.jpg" alt="Xancoin" class="coin-icon">
+            <span id="score-value">0</span>
+        </h1>
+        <div id="battle-area">
+            <div id="coin" class="coin" onclick="tapCoin()"></div>
+            <div id="plus-one" class="plus-one">+1</div>
+        </div>
+        <div id="tap-health">
+            hp: 5000
+        </div>
+    </div>
 
-                    <div id="friends" class="tab-content">
-                        <div class="content-box">
-                            <p>Пригласите друга и получите 5000 монет!</p>
-                            <button class="tab" onclick="inviteFriend()">Пригласить друга</button>
-                            <input type="text" id="invite-link" value="https://example.com/invite" style="display: none;">
-                            <button id="copy-button" class="tab" style="display: none;" onclick="copyLink()">Скопировать ссылку</button>
-                            <p id="reward-status"></p>
-                        </div>
-                    </div>
+    <div id="friends" class="tab-content">
+        <div class="content-box">
+            <p>Пригласите друга и получите 5000 монет!</p>
+            <button class="tab" onclick="inviteFriend()">Пригласить друга</button>
+            <input type="text" id="invite-link" value="https://example.com/invite" style="display: none;">
+            <button id="copy-button" class="tab" style="display: none;" onclick="copyLink()">Скопировать ссылку</button>
+            <p id="reward-status"></p>
+        </div>
+    </div>
 
-                    <div id="missions" class="tab-content">
-                        <div class="content-box">
-                            <p>Задание: Подпишитесь на наш канал в Telegram! Награда 5000</p>
-                            <button class="tab" onclick="completeMission(); window.open('https://t.me/xancoinapp', '_blank');">Перейти к каналу</button>
-                            <p id="mission-status"></p>
-                        </div>
-                    </div>
+    <div id="missions" class="tab-content">
+        <div class="content-box">
+            <p>Задание: Подпишитесь на наш канал в Telegram! Награда 5000</p>
+            <button class="tab" onclick="completeMission(); window.open('https://t.me/xancoinapp', '_blank');">Перейти к каналу</button>
+            <p id="mission-status"></p>
+        </div>
+    </div>
 
-                    <div id="airdrop" class="tab-content">
-                        <div class="content-box">
-                            <p>Скоро!</p>
-                        </div>
-                    </div>
-                </body>
-                </html>
+    <div id="airdrop" class="tab-content">
+        <div class="content-box">
+            <p>Скоро!</p>
+        </div>
+    </div>
+</body>
+</html>
