@@ -95,7 +95,18 @@ function subscribeToChannel() {
     window.open('https://t.me/xancoinapp', '_blank'); // Перенаправление по вашей ссылке
 }
 
+function startHealthRegeneration() {
+    setInterval(() => {
+        if (tapHealth < 5000) {
+            tapHealth++;
+            localStorage.setItem('tapHealth', tapHealth);
+            document.getElementById("tap-health").innerText = "hp: " + tapHealth;
+        }
+    }, 1000); // Восстанавливаем 1 единицу здоровья каждую секунду
+}
+
 window.onload = function() {
     restoreHealth(); // Восстанавливаем здоровье при загрузке
+    startHealthRegeneration(); // Запускаем восстановление здоровья по секундам
     console.log("Игра загружена успешно");
 }
