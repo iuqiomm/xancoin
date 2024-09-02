@@ -1,31 +1,27 @@
 let playerPoints = parseInt(localStorage.getItem('playerPoints')) || 0;
 let tapHealth = parseInt(localStorage.getItem('tapHealth')) || 5000;
-let lastTapTime = localStorage.getItem('lastTapTime') ? new Date(localStorage.getItem('lastTapTime')) : new Date(0);
 let missionCompleted = localStorage.getItem('missionCompleted') === 'true';
 
-document.getElementById("score").innerText = "Score: " + playerPoints;
+document.getElementById("score-value").innerText = playerPoints;
 document.getElementById("tap-health").innerText = "hp: " + tapHealth;
 
-function restoreHealth() {
-    const currentTime = new Date();
-    const timeDiff = Math.floor((currentTime - lastTapTime) / 1000);
-
-    if (timeDiff > 0) {
-        const healthToRestore = Math.floor(timeDiff / 3600);
-        tapHealth = Math.min(tapHealth + healthToRestore, 5000);
-        localStorage.setItem('tapHealth', tapHealth);
-    }
+// Function to restore health by 1 every second
+function startHealthRestoration() {
+    setInterval(() => {
+        if (tapHealth < 5000) {
+            tapHealth++;
+            localStorage.setItem('tapHealth', tapHealth);
+            document.getElementById("tap-health").innerText = "hp: " + tapHealth;
+        }
+    }, 1000); // Increment health every 1000 ms (1 second)
 }
 
 function tapCoin() {
     console.log("Монета нажата");
-    restoreHealth();
 
     if (tapHealth > 0) {
         addPoints(1);
         tapHealth--;
-        lastTapTime = new Date();
-        localStorage.setItem('lastTapTime', lastTapTime);
         localStorage.setItem('tapHealth', tapHealth);
 
         // Анимация монетки
@@ -48,7 +44,7 @@ function tapCoin() {
 function addPoints(points) {
     playerPoints += points;
     localStorage.setItem('playerPoints', playerPoints);
-    document.getElementById("score").innerText = "Score: " + playerPoints;
+    document.getElementById("score-value").innerText = playerPoints;
 }
 
 function showPlusOne() {
@@ -90,12 +86,7 @@ function completeMission() {
     }
 }
 
-function subscribeToChannel() {
-    completeMission(); // Выполняем миссию
-    window.open('https://t.me/xancoinapp', '_blank'); // Перенаправление по вашей ссылке
-}
-
 window.onload = function() {
-    restoreHealth(); // Восстанавливаем здоровье при загрузке
+    startHealthRestoration(); // Start the continuous health restoration when the page loads
     console.log("Игра загружена успешно");
-}
+};
