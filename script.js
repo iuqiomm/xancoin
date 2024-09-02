@@ -1,11 +1,49 @@
+// Инициализация переменных
 let playerPoints = parseInt(localStorage.getItem('playerPoints')) || 0;
 let tapHealth = parseInt(localStorage.getItem('tapHealth')) || 5000;
 let lastTapTime = localStorage.getItem('lastTapTime') ? new Date(localStorage.getItem('lastTapTime')) : new Date(0);
 let missionCompleted = localStorage.getItem('missionCompleted') === 'true';
+let invitedFriends = parseInt(localStorage.getItem('invitedFriends')) || 0;
 
-document.getElementById("score").innerText = "Score: " + playerPoints;
-document.getElementById("tap-health").innerText = "hp: " + tapHealth;
+// Получение элементов DOM
+let friendsCountElement = document.getElementById('friends-count');
 
+// Функция для обновления количества приглашённых друзей
+function updateFriendsCount() {
+    friendsCountElement.innerText = `Приглашено друзей: ${invitedFriends} / 25`;
+}
+
+// Функция для приглашения друга (копирование ссылки-приглашения)
+function inviteFriend() {
+    const inviteLink = "https://t.me/xancoinbot?start=your_referral_code";
+    
+    navigator.clipboard.writeText(inviteLink).then(() => {
+        alert("Ссылка-приглашение скопирована в буфер обмена! Поделитесь ею с друзьями.");
+    }).catch(err => {
+        console.error('Не удалось скопировать ссылку-приглашение: ', err);
+        alert("Не удалось скопировать ссылку-приглашение.");
+    });
+}
+
+// Функция, которая вызывается при успешном реферале
+function referralSuccessful() {
+    invitedFriends++;
+    localStorage.setItem('invitedFriends', invitedFriends);
+    updateFriendsCount();
+    addPoints(5000); // Награда 5000 монет за успешный реферал
+
+    if (invitedFriends >= 25) {
+        alert("Поздравляем! Вы пригласили 25 друзей. Вы заработали бонус в размере 500 000 монет!");
+        addPoints(500000); // Дополнительный бонус за приглашение 25 друзей
+    }
+}
+
+// Эта функция вызывается для симуляции успешного реферала (тестирование)
+function simulateReferral() {
+    referralSuccessful();
+}
+
+// Функция для восстановления здоровья
 function restoreHealth() {
     const currentTime = new Date();
     const timeDiff = Math.floor((currentTime - lastTapTime) / 1000);
@@ -19,6 +57,7 @@ function restoreHealth() {
     }
 }
 
+// Функция для тапов по монете
 function tapCoin() {
     console.log("Монета нажата");
     restoreHealth();
@@ -47,12 +86,14 @@ function tapCoin() {
     document.getElementById("tap-health").innerText = "hp: " + tapHealth;
 }
 
+// Функция добавления очков
 function addPoints(points) {
     playerPoints += points;
     localStorage.setItem('playerPoints', playerPoints);
     document.getElementById("score").innerText = "Score: " + playerPoints;
 }
 
+// Функция отображения +1
 function showPlusOne() {
     const plusOne = document.getElementById("plus-one");
     plusOne.style.opacity = 1;
@@ -64,23 +105,14 @@ function showPlusOne() {
     }, 700); // Анимация длится 500ms
 }
 
+// Функция открытия вкладок
 function openTab(tabName) {
     const tabs = document.querySelectorAll('.tab-content');
     tabs.forEach(tab => tab.classList.remove('active')); // Скрыть все вкладки
     document.getElementById(tabName).classList.add('active'); // Показать выбранную вкладку
 }
 
-function inviteFriend() {
-    const inviteLink = "https://t.me/xancoinbot";
-    navigator.clipboard.writeText(inviteLink).then(() => {
-        addPoints(50);
-        alert("Ссылка скопирована в буфер обмена! Пригласите друга по этой ссылке.");
-    }).catch(err => {
-        console.error('Ошибка при копировании ссылки: ', err);
-        alert("Не удалось скопировать ссылку.");
-    });
-}
-
+// Функция завершения миссии
 function completeMission() {
     if (!missionCompleted) {
         addPoints(5000); // Добавляем 5000 монет
@@ -92,13 +124,17 @@ function completeMission() {
     }
 }
 
+// Функция подписки на канал
 function subscribeToChannel() {
     completeMission(); // Выполняем миссию
     window.open('https://t.me/xancoinapp', '_blank'); // Перенаправление по вашей ссылке
 }
 
+// Обновление состояния при загрузке страницы
 window.onload = function() {
     restoreHealth(); // Восстанавливаем здоровье при загрузке
+    updateFriendsCount(); // Обновляем количество приглашённых друзей
+
     console.log("Игра загружена успешно");
 
     // Устанавливаем интервал для периодического восстановления здоровья каждую секунду
