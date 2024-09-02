@@ -1,6 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: url('foto/fonnn.jpg') no-repeat center center fixed; /* Заменили градиент на изображение */
+  background: url('foto/fonnn.jpg') no-repeat center center fixed;
   background-size: cover;
   text-align: center;
   color: white;
@@ -51,145 +51,114 @@ body {
   }
 }
 
-.menu {
-  display: flex;
-  justify-content: space-around;
-  background-color: rgba(26, 26, 26, 0.8);
-  padding: 10px;
-  border-radius: 30px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
-  margin: 15px 20px 0 20px;
+.menu{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+padding: 10px 0;
+background-color: rgba(0, 0, 0, 0.5);
+border-radius: 15px;
+box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+max-width: 800px;
+margin: 0 auto;
+overflow: hidden;
 }
 
-.menu button {
-  flex: 1;
-  margin: 0 8px;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 15px 40px 40px 15px;
-  background: linear-gradient(145deg, #333333, #555555);
-  color: #ffcc00;
-  border: 1px solid #ffcc00;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+.tab {
+background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+color: white;
+font-size: 18px;
+font-weight: bold;
+text-transform: uppercase;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+margin: 0 10px;
+border-radius: 10px;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.menu button:hover {
-  background: linear-gradient(145deg, #ffcc00, #ffdd33);
-  transform: scale(1.03) rotate(-1deg);
-  color: #1a1a1a;
-  box-shadow: 0px 4px 10px rgba(255, 223, 0, 0.5);
+.tab:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-.gold-button {
-  background: linear-gradient(145deg, #ffd700, #ffdf00);
-  color: #1a1a1a;
-  border: 1px solid #ffcc00;
-  box-shadow: 0px 3px 6px rgba(255, 223, 0, 0.5);
-  border-radius: 15px;
-  transition: all 0.3s ease;
-}
-
-.gold-button:hover {
-  background: linear-gradient(145deg, #ffe135, #ffeb3b);
-  transform: scale(1.03) rotate(-1deg);
-  color: #1a1a1a;
-  box-shadow: 0px 4px 10px rgba(255, 223, 0, 0.6);
-}
-
-.invite-button, .channel-button {
-  background: linear-gradient(145deg, #ffd700, #ffdf00); /* Золотой градиент */
-  color: #1a1a1a; /* Черный текст */
-  border: 1px solid #ffcc00; /* Золотая граница */
-  box-shadow: 0px 3px 6px rgba(255, 223, 0, 0.5); /* Тень */
-  border-radius: 15px; /* Скругление углов */
-  transition: all 0.3s ease; /* Плавный переход */
-}
-
-.invite-button:hover, .channel-button:hover {
-  background: linear-gradient(145deg, #ffe135, #ffeb3b); /* Яркий золотой градиент при наведении */
-  transform: scale(1.03) rotate(-1deg); /* Увеличение и вращение при наведении */
-  color: #1a1a1a; /* Черный текст */
-  box-shadow: 0px 4px 10px rgba(255, 223, 0, 0.6); /* Увеличенная тень при наведении */
+.tab:focus {
+outline: none;
 }
 
 .tab-content {
-  display: none;
-  padding: 20px;
+display: none;
+margin-top: 30px;
 }
 
 .tab-content.active {
-  display: block;
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-h1#score {
-  color: #ffcc00;
-  font-size: 1.8em;
-  margin-top: 15px;
-  padding: 10px;
-  background: linear-gradient(90deg, #333333, #444444);
-  border-radius: 15px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+display: block;
 }
 
 #battle-area {
-  margin: 40px auto;
-  position: relative;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 50px;
+height: 300px;
 }
 
 .coin {
-  width: 200px;
-  height: 200px;
-  background-image: url('foto/sticker.jpg'); /* Обновили путь к изображению */
-  background-size: cover;
-  background-position: center;
-  margin: 0 auto;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-  border-radius: 50%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+width: 150px;
+height: 150px;
+background-image: url(‘foto/tokens.jpg’);
+background-size: cover;
+border-radius: 50%;
+cursor: pointer;
+box-shadow: 0 0 15px rgba(255, 255, 0, 0.7), 0 0 30px rgba(255, 255, 0, 0.5);
+animation: float 3s ease-in-out infinite;
+transition: transform 0.1s ease;
 }
 
-.animate-coin {
-  transform: scale(0.85);
+@keyframes float {
+0%, 100% {
+transform: translateY(-10px);
+}
+50% {
+transform: translateY(10px);
+}
 }
 
-.plus-one {
-  position: absolute;
-  font-size: 30px;
-  font-weight: bold;
-  color: #ffd700;
-  opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.coin:hover {
+transform: scale(1.05);
+}
+
+#plus-one {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 24px;
+font-weight: bold;
+color: #ff0000;
+opacity: 0;
+transition: all 0.5s ease;
+pointer-events: none;
 }
 
 #tap-health {
-  color: white;
-  background-color: rgb(59, 77, 84, 0.7);
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 160px;
-  font-size: 18px;
-  box-shadow: 0px 14px 10px rgba(0, 0, 0, 0.4);
+margin-top: 20px;
+font-size: 24px;
+color: white;
+text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .content-box {
-  background-color: rgba(20, 20, 20, 0.8);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+background-color: rgba(0, 0, 0, 0.5);
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+max-width: 600px;
+margin: 20px auto;
 }
 
 .content-box p {
-  margin: 15px 0;
-  font-size: 1.4em;
+font-size: 18px;
 }
