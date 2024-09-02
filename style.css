@@ -102,16 +102,20 @@ body {
   background: linear-gradient(145deg, #ffd700, #ffdf00); /* Золотой градиент */
   color: #1a1a1a; /* Черный текст */
   border: 1px solid #ffcc00; /* Золотая граница */
-  box-shadow: 0px 3px 6px rgba(255, 223, 0, 0.5); /* Тень */
-  border-radius: 15px; /* Скругление углов */
+  border-radius: 25px; /* Скругленные углы */
+  padding: 12px 24px; /* Увеличенные отступы */
+  font-size: 16px; /* Размер шрифта */
+  font-weight: bold; /* Полужирный шрифт */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+  cursor: pointer; /* Курсор при наведении */
   transition: all 0.3s ease; /* Плавный переход */
 }
 
 .invite-button:hover, .channel-button:hover {
-  background: linear-gradient(145deg, #ffe135, #ffeb3b); /* Яркий золотой градиент при наведении */
-  transform: scale(1.03) rotate(-1deg); /* Увеличение и вращение при наведении */
+  background: linear-gradient(145deg, #ffeb3b, #ffe135); /* Яркий золотой градиент при наведении */
   color: #1a1a1a; /* Черный текст */
-  box-shadow: 0px 4px 10px rgba(255, 223, 0, 0.6); /* Увеличенная тень при наведении */
+  transform: scale(1.05); /* Увеличение при наведении */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Увеличенная тень при наведении */
 }
 
 .tab-content {
