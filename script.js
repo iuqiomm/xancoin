@@ -2,6 +2,8 @@ let playerPoints = parseInt(localStorage.getItem('playerPoints')) || 0;
 let tapHealth = parseInt(localStorage.getItem('tapHealth')) || 5000;
 let lastTapTime = localStorage.getItem('lastTapTime') ? new Date(localStorage.getItem('lastTapTime')) : new Date(0);
 let missionCompleted = localStorage.getItem('missionCompleted') === 'true';
+let inviteCount = parseInt(localStorage.getItem('inviteCount')) || 0;
+let inviteRewardGiven = localStorage.getItem('inviteRewardGiven') === 'true';
 
 document.getElementById("score").innerText = "Score: " + playerPoints;
 document.getElementById("tap-health").innerText = "hp: " + tapHealth;
@@ -11,7 +13,6 @@ function restoreHealth() {
     const timeDiff = Math.floor((currentTime - lastTapTime) / 1000);
 
     if (timeDiff > 0) {
-        // Восстанавливаем 1 hp каждую секунду
         const healthToRestore = timeDiff;
         tapHealth = Math.min(tapHealth + healthToRestore, 5000);
         localStorage.setItem('tapHealth', tapHealth);
@@ -30,16 +31,14 @@ function tapCoin() {
         localStorage.setItem('lastTapTime', lastTapTime);
         localStorage.setItem('tapHealth', tapHealth);
 
-        // Анимация монетки
         const coin = document.getElementById("coin");
         coin.classList.add("animate-coin");
 
-        // Показать +1
         showPlusOne();
 
         setTimeout(() => {
             coin.classList.remove("animate-coin");
-        }, 100); // Вернуть монетку в исходное положение через 100ms
+        }, 100);
     } else {
         alert("Вы исчерпали возможность тапов на этот час! Пожалуйста, подождите.");
     }
@@ -61,13 +60,13 @@ function showPlusOne() {
     setTimeout(() => {
         plusOne.style.opacity = 0;
         plusOne.style.transform = "translate(-50%, -50%)";
-    }, 700); // Анимация длится 500ms
+    }, 700);
 }
 
 function openTab(tabName) {
     const tabs = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => tab.classList.remove('active')); // Скрыть все вкладки
-    document.getElementById(tabName).classList.add('active'); // Показать выбранную вкладку
+    tabs.forEach(tab => tab.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
 }
 
 function inviteFriend() {
@@ -79,30 +78,46 @@ function inviteFriend() {
         console.error('Ошибка при копировании ссылки: ', err);
         alert("Не удалось скопировать ссылку.");
     });
+
+    // Здесь должна быть проверка на сервере, перешел ли друг по ссылке
+    // Если друг переходит по ссылке, вызывается эта функция:
+    friendJoined();
+}
+
+function friendJoined() {
+    inviteCount++;
+    localStorage.setItem('inviteCount', inviteCount);
+    updateInviteProgress();
+}
+
+function updateInviteProgress() {
+    document.getElementById("invite-progress").innerText = `Приглашено друзей: ${inviteCount}/25`;
+
+    if (inviteCount >= 25 && !inviteRewardGiven) {
+        addPoints(500000);
+        document.getElementById("invite-reward-status").innerText = "Вы получили 500,000 монет за приглашение 25 друзей!";
+        localStorage.setItem('inviteRewardGiven', true);
+        inviteRewardGiven = true;
+    }
 }
 
 function completeMission() {
     if (!missionCompleted) {
-        addPoints(5000); // Добавляем 5000 монет
+        addPoints(5000);
 
-        localStorage.setItem('missionCompleted', true); // Сохраняем выполнение задания
+        localStorage.setItem('missionCompleted', true);
         missionCompleted = true;
     } else {
         alert("Вы уже получили вознаграждение за это задание.");
     }
 }
 
-function subscribeToChannel() {
-    completeMission(); // Выполняем миссию
-    window.open('https://t.me/xancoinapp', '_blank'); // Перенаправление по вашей ссылке
-}
-
 window.onload = function() {
-    restoreHealth(); // Восстанавливаем здоровье при загрузке
+    restoreHealth();
+    updateInviteProgress();
     console.log("Игра загружена успешно");
 
-    // Устанавливаем интервал для периодического восстановления здоровья каждую секунду
     setInterval(() => {
         restoreHealth();
-    }, 1000); // 1000 мс = 1 секунда
+    }, 1000);
 }
