@@ -83,7 +83,7 @@ function inviteFriend() {
 
 function completeMission() {
     if (!missionCompleted) {
-        addPoints(5000); // Добавляем 5000 монет
+        addPoints(50000); // Добавляем 5000 монет
 
         localStorage.setItem('missionCompleted', true); // Сохраняем выполнение задания
         missionCompleted = true;
