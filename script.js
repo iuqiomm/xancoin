@@ -2,7 +2,6 @@ let playerPoints = parseInt(localStorage.getItem('playerPoints')) || 0;
 let tapHealth = parseInt(localStorage.getItem('tapHealth')) || 5000;
 let lastTapTime = localStorage.getItem('lastTapTime') ? new Date(localStorage.getItem('lastTapTime')) : new Date(0);
 let missionCompleted = localStorage.getItem('missionCompleted') === 'true';
-let invitesSent = parseInt(localStorage.getItem('invitesSent')) || 0;
 
 document.getElementById("score").innerText = "Score: " + playerPoints;
 document.getElementById("tap-health").innerText = "hp: " + tapHealth;
@@ -72,9 +71,7 @@ function openTab(tabName) {
 }
 
 function inviteFriend() {
-    const playerId = localStorage.getItem('playerId') || generatePlayerId(); // Уникальный ID игрока
-    localStorage.setItem('playerId', playerId);
-    const inviteLink = `https://t.me/xancoinbot?referrer=${playerId}`;
+    const inviteLink = "https://t.me/xancoinbot";
     navigator.clipboard.writeText(inviteLink).then(() => {
         addPoints(50);
         alert("Ссылка скопирована в буфер обмена! Пригласите друга по этой ссылке.");
@@ -84,13 +81,9 @@ function inviteFriend() {
     });
 }
 
-function generatePlayerId() {
-    return 'player-' + Math.random().toString(36).substr(2, 9);
-}
-
 function completeMission() {
     if (!missionCompleted) {
-        addPoints(50000); // Добавляем 50000 монет
+        addPoints(50000); // Добавляем 5000 монет
 
         localStorage.setItem('missionCompleted', true); // Сохраняем выполнение задания
         missionCompleted = true;
@@ -104,29 +97,6 @@ function subscribeToChannel() {
     window.open('https://t.me/xancoinapp', '_blank'); // Перенаправление по вашей ссылке
 }
 
-// Проверка реферального параметра
-function checkReferral() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const referrer = urlParams.get('referrer');
-
-    if (referrer) {
-        // Обработка перехода по реферальной ссылке
-        invitesSent++;
-        localStorage.setItem('invitesSent', invitesSent);
-        updateRewardStatus();
-    }
-}
-
-function updateRewardStatus() {
-    const rewardStatus = document.getElementById('reward-status');
-    if (invitesSent >= 25) {
-        addPoints(500000);
-        rewardStatus.innerText = "Вы пригласили 25 друзей и получили 500000 монет!";
-    } else {
-        rewardStatus.innerText = `Вы пригласили ${invitesSent} друзей. Пригласите еще ${25 - invitesSent} для получения награды.`;
-    }
-}
-
 window.onload = function() {
     restoreHealth(); // Восстанавливаем здоровье при загрузке
     console.log("Игра загружена успешно");
@@ -135,7 +105,4 @@ window.onload = function() {
     setInterval(() => {
         restoreHealth();
     }, 1000); // 1000 мс = 1 секунда
-
-    // Проверяем реферальный параметр при загрузке страницы
-    checkReferral();
 }
