@@ -10,6 +10,7 @@
 <body>
     <div id="top-bar">
         <div id="game-title">Xancoin</div>
+        <div id="player-id"></div>
     </div>
 
     <div class="menu">
@@ -33,19 +34,27 @@
 
     <div id="friends" class="tab-content">
         <div class="content-box">
-            <p>Пригласите друга и получите 50000 монет!</p>
+            <p>Пригласите друга и получите 5000 монет!</p>
             <button class="invite-button" onclick="inviteFriend()">Пригласить друга</button>
             <input type="text" id="invite-link" value="https://example.com/invite" style="display: none;">
             <button id="copy-button" class="invite-button" style="display: none;" onclick="copyLink()">Скопировать ссылку</button>
             <p id="reward-status"></p>
+            <hr>
+            <p>Введите ID друга для проверки:</p>
+            <input type="text" id="friend-id-input" placeholder="Введите ID друга">
+            <button class="invite-button" onclick="checkFriendId()">Проверить ID</button>
+            <p id="check-status"></p>
         </div>
     </div>
 
     <div id="missions" class="tab-content">
         <div class="content-box">
             <p>Задание: Подпишитесь на наш канал в Telegram! Награда 50000</p>
-            <button class="channel-button" onclick="completeMission(); window.open('https://t.me/xancoinapp', '_blank');">Перейти к каналу</button>
+            <button class="channel-button" onclick="subscribeToChannel()">Перейти к каналу</button>
             <p id="mission-status"></p>
+            <hr>
+            <p>Задание 2: Пригласите 25 друзей и получите 800000 монет!</p>
+            <p id="friends-mission-status">Приглашено друзей: 0/25</p>
         </div>
     </div>
 
