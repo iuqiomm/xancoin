@@ -83,7 +83,7 @@ function inviteFriend() {
 
 function completeMission() {
     if (!missionCompleted) {
-        addPoints(50000);
+        addPoints(2000000);
         localStorage.setItem('missionCompleted', true);
         missionCompleted = true;
     } else {
