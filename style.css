@@ -11,17 +11,18 @@ body {
 
 #top-bar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Расположение элементов по краям */
+  align-items: center; /* Выравнивание по вертикали */
   padding: 20px 15px;
   background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3), inset 0px 2px 5px rgba(255, 255, 255, 0.2);
   border-radius: 0 0 50px 50px;
-  position: relative;
+  position: relative; /* Добавляем относительное позиционирование */
   overflow: hidden;
 }
 
 #game-title {
-  font-size: 48px;
+  font-size: 25px; /* Уменьшаем размер шрифта */
   font-weight: bold;
   color: #ffcc00;
   text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
@@ -29,6 +30,30 @@ body {
   text-transform: uppercase;
   position: relative;
   animation: fadeIn 2s ease-in-out, glow 1.5s infinite alternate;
+  margin-left: 25px; /* Добавляем отступ слева, чтобы сдвинуть текст правее */
+}
+
+#player-id {
+  font-size: 18px; /* Размер шрифта для ID */
+  color: #ffd700; /* Темно-золотой цвет текста */
+  font-weight: bold;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8); /* Тень для текста */
+  background: linear-gradient(145deg, #b8860b, #daa520); /* Темно-золотой градиент */
+  padding: 8px 15px; /* Отступы внутри элемента */
+  border-radius: 10px; /* Скругленные углы */
+  border: 1px solid #ffd700; /* Золотая граница */
+  position: absolute; /* Абсолютное позиционирование */
+  top: 50%; /* Вертикальное позиционирование */
+  right: 20px; /* Расстояние от правого края */
+  transform: translateY(-50%); /* Центрирование по вертикали */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5); /* Тень для выделения */
+  transition: background 0.3s ease, transform 0.3s ease; /* Плавные переходы */
+}
+
+#player-id:hover {
+  background: linear-gradient(145deg, #f5c518, #ffcc00); /* Яркий золотой градиент при наведении */
+  transform: scale(1.05); /* Увеличение при наведении */
+  cursor: pointer; /* Изменение курсора при наведении */
 }
 
 @keyframes fadeIn {
@@ -196,4 +221,154 @@ h1#score {
 .content-box p {
   margin: 15px 0;
   font-size: 1.4em;
+}
+
+#check-invite {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(30, 30, 30, 0.9); /* Темный фон с прозрачностью */
+  border-radius: 12px; /* Скругленные углы */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Более заметная тень */
+  max-width: 500px; /* Ограничение ширины */
+  margin-left: auto;
+  margin-right: auto; /* Центрирование формы */
+}
+
+#check-invite input {
+  padding: 12px 15px;
+  font-size: 18px;
+  border-radius: 8px; /* Скругленные углы */
+  border: 1px solid #666; /* Серая граница */
+  background: rgba(50, 50, 50, 0.8); /* Темный фон для поля ввода */
+  color: #fff; /* Белый текст */
+  width: calc(100% - 140px); /* Ширина с учетом отступов */
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3); /* Внутренняя тень */
+  transition: all 0.3s ease; /* Плавный переход */
+}
+
+#check-invite input:focus {
+  border-color: #ffd700; /* Золотая граница при фокусе */
+  background: rgba(40, 40, 40, 0.9); /* Темнее фон при фокусе */
+  outline: none; /* Убираем стандартный фокусный контур */
+}
+
+#check-invite button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 8px; /* Скругленные углы */
+  background: linear-gradient(145deg, #ffcc00, #ffdf00); /* Золотой градиент */
+  color: #1a1a1a; /* Черный текст */
+  border: 1px solid #ffcc00; /* Золотая граница */
+  cursor: pointer; /* Указатель курсора */
+  transition: all 0.3s ease; /* Плавный переход */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+  margin-left: 10px; /* Отступ от поля ввода */
+}
+
+#check-invite button:hover {
+  background: linear-gradient(145deg, #ffe135, #ffeb3b); /* Яркий золотой градиент при наведении */
+  color: #1a1a1a; /* Черный текст */
+  transform: scale(1.05); /* Увеличение при наведении */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Увеличенная тень при наведении */
+}
+
+#invite-status {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #ffd700; /* Золотой цвет текста */
+  text-align: center; /* Центрирование текста */
+}
+#missions, #friends {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(30, 30, 30, 0.8); /* Темный полупрозрачный фон */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Тень для придания глубины */
+}
+
+#missions p, #friends p {
+  font-size: 1.2em; /* Уменьшенный размер шрифта */
+  color: #e0e0e0; /* Светлый цвет текста для лучшего контраста */
+  margin: 15px 0; /* Отступы для текстовых блоков */
+}
+
+#missions button, #friends button {
+  background: linear-gradient(145deg, #ffcc00, #ffd700); /* Золотой градиент */
+  color: #1a1a1a; /* Черный текст */
+  border: 1px solid #ffcc00; /* Золотая граница */
+  border-radius: 25px; /* Скругленные углы */
+  padding: 12px 24px; /* Увеличенные отступы */
+  font-size: 16px; /* Размер шрифта */
+  font-weight: bold; /* Полужирный текст */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Тень */
+  cursor: pointer; /* Курсор при наведении */
+  transition: all 0.3s ease; /* Плавный переход */
+  margin: 10px; /* Отступы вокруг кнопок */
+}
+
+#missions button:hover, #friends button:hover {
+  background: linear-gradient(145deg, #ffe135, #ffeb3b); /* Яркий золотой градиент при наведении */
+  color: #1a1a1a; /* Черный текст */
+  transform: scale(1.05); /* Увеличение при наведении */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Увеличенная тень при наведении */
+}
+
+#missions #channel-button, #friends .invite-button {
+  display: block;
+  margin: 15px auto;
+}
+
+#missions #mission-status, #friends #reward-status, #friends #check-status {
+  font-size: 1.2em; /* Уменьшенный размер шрифта для статусов */
+  color: #ffd700; /* Золотой цвет текста */
+  margin-top: 10px;
+}
+
+#missions .content-box, #friends .content-box {
+  background-color: rgba(40, 40, 40, 0.8); /* Темный фон с прозрачностью */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Тень для блока контента */
+}
+
+#missions .content-box p, #friends .content-box p {
+  font-size: 1.2em; /* Уменьшенный размер шрифта */
+  color: #e0e0e0; /* Светлый цвет текста */
+}
+
+#missions .content-box input, #friends .content-box input {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #666;
+  background: rgba(50, 50, 50, 0.8);
+  color: #fff;
+  width: calc(100% - 130px);
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+#missions .content-box input:focus, #friends .content-box input:focus {
+  border-color: #ffd700;
+  background: rgba(40, 40, 40, 0.9);
+  outline: none;
+}
+
+#missions .content-box button, #friends .content-box button {
+  padding: 12px 24px;
+  font-size: 1em;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #ffd700, #ffdf00);
+  color: #1a1a1a;
+  border: 1px solid #ffcc00;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+}
+
+#missions .content-box button:hover, #friends .content-box button:hover {
+  background: linear-gradient(145deg, #ffe135, #ffeb3b);
+  color: #1a1a1a;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
 }
